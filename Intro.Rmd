@@ -14,13 +14,13 @@ La estimación en áreas pequeñas (EAP) son un conjunto de técnicas que ayudan
 
 Para explicar de mejor manera a qué se llama _área pequeña_ se ilustra el siguiente ejemplo:
 
-Tenemos el siguiente cuadrado que representa a un país cualquiera y que esta dividido en 9 entidades. Se obtiene una muestra aleatoria simple y representativa de cada entidad para observar el promedio del ingreso del país. Con la información de la muestra no se tendría ningún problema para elaborar algún modelo de estimación (MCO por ejemplo) del ingreso en el país (estimaciones directas); sin embargo, si quisiéramos trabajar con un nivel geográfico más pequeño, una sola entidad, por ejemplo, es probable que la muestra tomada de esa área resulte insuficiente para realizar estimaciones puesto que habrá municipios de los que se tomó una mayor muestra o que ni siquiera están representados. A estas se les conoce como áreas pequeñas y se recurre a técnicas estadísticas especiales (estimaciones indirectas) para su estimación ya que resulta mucho más asequible que tomar una mayor muestra.
+La Encuesta nacional de ingresos y gastos de los hogares (ENIGH) obtiene una muestra probabilistica estratificada en dos etapas, de tal forma que cada estado tenga un muestra representativa de su población. Si quisiésemos realizar algún modelo econometrico para estimar alguna de las variables que contiene con dicha muestra, no tendríamos problemas en términos del tamaño de la muestra a este nivel de desagregación. Por otro lado, si quisiéramos trabajar con un nivel geográfico más pequeño, una sola entidad, por ejemplo, es probable que la muestra tomada de esa área resulte insuficiente para realizar estimaciones puesto que habrá municipios de los que se tomó una mayor muestra o que ni siquiera están representados. A estas se les conoce como áreas pequeñas y se recurre a técnicas estadísticas especiales (estimaciones indirectas) para su estimación ya que resulta mucho más asequible que tomar una mayor muestra.
 
-<center>
-```{r, echo=FALSE, fig.align='center',out.width='100%',fig.cap='Áreas pequeñas'} 
-knitr::include_graphics("imagenes/Imagen 1.1.png")
+```{r image_grobs, echo=FALSE, fig.align="default", fig.cap='Áreas pequeñas', fig.show="hold", out.width="50%"}
+knitr::include_graphics("imagenes/Ent_Enc.png")
+knitr::include_graphics("imagenes/Mun_Enc.png")
+
 ```
-</center>
 
 De forma general, el método consiste en la utilización de censos o encuestas y de información auxiliar para "tomar prestada la fuerza" al usar los valores de la variable de interés, y así, aumentar el tamaño de la muestra "efectivo", es decir, tomar la riqueza de información de otras fuentes y así mejorar las estimaciones. A estos estimadores se les conoce como "indirectos", "sintéticos" o de "área pequeña".
 
@@ -30,7 +30,7 @@ Existen tres tipos de estimadores indirectos.
   - Tiempo
   - Tiempo y área
   
-Los estimadores de área pequeña (EBM) se basan en inferencia basada en modelos, esto es que a diferencia de la inferencia basada en el diseño de muestra, la distribución de probabilidad esta implícita en el modelo que se asume. Por lo tanto, la selección del mismo asi como su validación juegan un papel vital en las EBM
+Los estimadores de área pequeña (EBM) se basan en inferencia basada en modelos, esto es que, a diferencia de la inferencia basada en el diseño de la muestra, la distribución de probabilidad esta implícita en el modelo que se asume. Por lo tanto, la selección del mismo así como su validación juegan un papel vital en las EBM
 
 En el libro de Rao (1937) _"Small Areas Estimation"_ se explica que los modelos de vinculación explícitos basados en efectos aleatorios específicos del área que dan cuenta de la variación entre áreas más allá de lo que pueden explicar las variables auxiliares del modelo se denominan _"modelos de áreas pequeñas (MAP)"_
 
