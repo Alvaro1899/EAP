@@ -1,5 +1,5 @@
 ---
-title: "Estimación en areas pequeñas"
+title: "Estimación en areas pequeñas (EAP)"
 author: "Alvaro Martínez Rodríguez"
 date: "`r Sys.Date()`"
 output:
@@ -21,31 +21,34 @@ knitr::include_graphics("imagenes/Ent_Enc.png")
 knitr::include_graphics("imagenes/Mun_Enc.png")
 
 ```
+En muchas encuestas o censos existe un problema común y es que los tamaños de la muestra para muchos estados son pequeños. Entonces, se pueden hacer estimaciones directas sobre las características del dominio considerado en el diseño de la muestra pero, no se pueden usar para estimar las características de cada estado de forma individual.
 
 De forma general, el método consiste en la utilización de censos o encuestas y de información auxiliar para "tomar prestada la fuerza" al usar los valores de la variable de interés, y así, aumentar el tamaño de la muestra "efectivo", es decir, tomar la riqueza de información de otras fuentes y así mejorar las estimaciones. A estos estimadores se les conoce como "indirectos", "sintéticos" o de "área pequeña".
 
 Existen tres tipos de estimadores indirectos.
  
-  - Área o dominio
-  - Tiempo
-  - Tiempo y área
+  - Área o dominio: Utiliza valores de otro dominio como información auxiliar.
+  - Tiempo: Utiliza valores de otro periodo de tiempo como información auxiliar.
+  - Tiempo y área: usa valores de otro dominio, así como de otro periodo.
   
-Los estimadores de área pequeña (EBM) se basan en inferencia basada en modelos, esto es que, a diferencia de la inferencia basada en el diseño de la muestra, la distribución de probabilidad esta implícita en el modelo que se asume. Por lo tanto, la selección del mismo así como su validación juegan un papel vital en las EBM
+Los estimadores de área pequeña o indirectos (EBM) tradicionalmente se basan en modelos de vinculación implícita que están bajo el supuesto de que las áreas pequeñas tienen el mismo comportamiento estadístico que las grandes.Si el modelo de vinculación implícita es aproximadamente cierto, entonces el sesgo de diseño será pequeño, lo que conducirá a un error cuadrático medio (MSE) de diseño significativamente menor en comparación con el MSE de un estimador directo. La reducción en MSE es la principal razón para usar estimadores indirectos.
 
-En el libro de Rao (1937) _"Small Areas Estimation"_ se explica que los modelos de vinculación explícitos basados en efectos aleatorios específicos del área que dan cuenta de la variación entre áreas más allá de lo que pueden explicar las variables auxiliares del modelo se denominan _"modelos de áreas pequeñas (MAP)"_
+Actualmente, han llamado la atención los estimadores indirectos basados en modelos de vinculación explícitos o estimadores basados en modelos.Estos modelos tienen en cuenta específicamente la variación entre áreas. En particular, los modelos mixtos que involucran efectos aleatorios específicos del área que explican la variación entre áreas más allá de lo explicado por las variables auxiliares incluidas en el modelo.
 
-Tipos de MAP
+Existen dos tipos de estimadores basados en modelos o de área pequeña:
 
-  - Modelos de nivel agregado o de área
-  - Modelos de nivel de unidad
+  - Modelos de nivel agregado o de área: Relacionan las medias de área pequeña con las variables auxiliares específicas del área
+  - Modelos de nivel de unidad: Relacionan los valores unitarios de la variable de estudio con las variables auxiliares específicas de la unidad
   
-### Antecedentes {-}
+### Un breve repaso historico {-}
 
-Las EAP evolucionaron de métodos demográficos para la estimación de la población [@Gosh&Rao1994, p. 55-93] [@Mancho2002, p. 3]. Antes de los censos utilizaban registros administrativos poblacionales relativos a nacimientos, muertes, migración, etc. Si bien esta información no se obtenía con fines estadísticos, sí se puede extraer información útil para la inferencia estadística [@Erciulescu2018]. En [@Brackstone1987] se menciona que el uso de los registros administrativos para EAP data de siglo XI en Inglaterra, y el siglo XVII en Canadá. Existen registros que estos métodos empezaron a ser utilizados en Inglaterra, Estados Unidos y Canadá hacia finales del siglo XIX. [@Zhang2016] hicieron una revisión exhaustiva de EAP basados en registros.
+Las EAP evolucionaron de métodos demográficos para la estimación de la población en áreas pequeñas [@Gosh&Rao1994, p. 55-93] [@Mancho2002, p. 3]. Se utilizaban registros administrativos poblacionales relativos a nacimientos, muertes, migración, etc. Si bien, esta información no se obtenía con fines estadísticos, sí se puede extraer información útil para la inferencia estadística [@Erciulescu2018]. En [@Brackstone1987] se menciona que el uso de los registros administrativos para EAP data de siglo XI en Inglaterra, y el siglo XVII en Canadá. Existen registros que estos métodos empezaron a ser utilizados en Inglaterra, Estados Unidos y Canadá hacia finales del siglo XIX. 
 
 En años posteriores y con el nacimiento de las encuestas de población, se desarrollaron métodos que combinan censos o encuestas con registros administrativos. [@Pursell1980] categorizaron esta clase de métodos bajo el nombre de _Técnicas Contables Sintomáticas (SAT en inglés)_. [@Gosh&Rao1994, p. 55-93] mencionan algunos de los métodos descritos en la literatura, estos son: las _Vital Rates method _ _(Bogue, 1950)_, método compuesto _(Bogue y Duncan, 1959)_, el Método del Componente del Censo II (CM-II) _(U.S. Bureau of the Census, 1966)_, el método de Registros Administrativos (AR) _(Starsinic, 1974)_, y el método de Unidad de Vivienda (HU) _(Smith y Lewis, 1980)_.
 
 Actualmente las EAP han causado cada vez más interés en el sector público y privado debido a la alta demanda de obtener estimadores confiables para áreas pequeñas. Por ejemplo: "[...] se necesitan estadísticas de áreas pequeñas en la distribución de fondos gubernamentales y en la planificación regional y urbana. Además, [...] la formulación de políticas de muchas empresas e industrias depende de las condiciones socio económicas locales" [@Gosh&Rao1994, p. 56].
+
+### Investigaciones que han utilizado EAP {-}
 
 Como se mencionó anteriormente, la importancia estadística ha crecido en los últimos años por lo que también lo han hecho el número de investigaciones sobre el tema. El Instituto Nacional de Estadística (INE) de España,  utilizó estas técnicas para la Encuesta de Población Activa con información auxiliar de registros de población y laborales con el objetivo de estimar la población ocupada de las islas de Canarias [@Paños2000]. Se recurrió a estimadores sintéticos, a posteriori y compuestos, comparando su coeficiente de variación para determinar cuál es el menor sesgo. Se concluyó que las variables explicativas, así como la diferencia entre los vectores de efectivos observacionales que proporciona la EPA y la fuente estadística auxiliar serán determinantes de las varianzas estimadas del modelo.
 
